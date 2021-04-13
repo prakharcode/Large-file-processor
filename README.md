@@ -43,6 +43,15 @@ python app.py aggregate <table_name> <aggregate_key>
 ```
 
 ---
+## To observe **celery** metrics:
+
+1. Go to `localhost:3000` (Grafana).
+
+2. Enter default username:password = admin:admin
+
+3. Go to celery dashboard.
+
+---
 ## Table and schema details.
 
 1. Final table that is built: 
@@ -91,14 +100,14 @@ products (
 
 ![System Architecture](assets/system_arch.png)
 
-[miro link](https://miro.com/app/board/o9J_lKH-p-o=/?moveToWidget=3074457357134836879&cot=14)
+- [miro link](https://miro.com/app/board/o9J_lKH-p-o=/?moveToWidget=3074457357134836879&cot=14)
 ---
 # Pattern of code
 
 ![Pattern of code](assets/pattern.png)
 
 ---
-What would you improve if given more days?
+## What would you improve if given more days?
 
  > _*While I was not able to perform the task in stipulated amount of time because I was down with fever. But if given more time*_:
 
@@ -114,7 +123,7 @@ What would you improve if given more days?
 
 6. Productionized the code and application design. While I was able to seperate the components of the architecture well. Since this was my first time coding directly celery tasks, I would need to resturcture the celery tasks and follow industry adopted pattern.
 ---
-**Some Assumptions underlying observations:**
+## **Some Assumptions underlying observations:**
 
 - All the insertion and updates are based on taking `sku` and `name` as unique constraint or composite key.
 
@@ -125,7 +134,7 @@ What would you improve if given more days?
 - I was confused between distributed and multiprocessing. Later on assuming, there's an ask of distributed system as a whole.
 
 ---
-### Some extra stuff for bonus points:
+## Some extra stuff for bonus points:
 
 - Implemented log stack using `prometheus` and `grafana`.
 
@@ -140,4 +149,3 @@ What would you improve if given more days?
 ## (If this interests you) Some things that I learned:
 
 [link to notion](https://www.notion.so/prakharcode/Task-learnings-b6eb45e25357494aacbe4094e79b9123)
-
