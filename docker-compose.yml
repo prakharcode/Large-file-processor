@@ -1,0 +1,110 @@
+version: '3.4'
+
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    hostname: rabbitmq
+    image: rabbitmq:latest
+    networks:
+      - main
+    ports:
+      - "5672:5672"
+    restart: on-failure
+
+  postgres:
+    container_name: postgres
+    hostname: postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=postgres
+    networks:
+      - main
+    ports:
+      - "5000:5432"
+    restart: on-failure
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+
+  celery_metrics:
+    build: .
+    command: ["celery-exporter", "-b", "amqp://rabbitmq:5672/"]
+    container_name: celery-metrics
+    depends_on:
+      - rabbitmq
+    hostname: app
+    image: app-image
+    networks:
+      - main
+    ports:
+      - "9540:9540"
+    restart: on-failure
+
+  celery_flower:
+    container_name: flower
+    image: app-image
+    networks:
+      - main
+    ports:
+      - "5555:5555"
+    command: sh -c "celery -A postman_task flower ---loglevel=info"
+    restart: on-failure
+
+  celery_worker:
+    environment: 
+      - CELERY_BROKER_URL=amqp://rabbitmq:5672/
+    command: ["celery", "-A", "postman_task", "worker", "-E", "-l", "info"]
+    depends_on:
+      - postgres
+      - rabbitmq
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    hostname: celery_worker
+    image: app-image
+    links:
+      - rabbitmq
+    volumes:
+      - ./data:/data
+      - ./data/dump:/dump
+    networks:
+      - main
+    restart: on-failure
+
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus
+    hostname: prometheus
+    volumes:
+      - ./data/prometheus/config:/prometheus
+      - ./data/prometheus:/data
+    command:
+      - '--config.file=/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/data'
+    ports:
+      - 9090:9090
+    restart: on-failure
+    networks:
+      - main
+  
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    hostname: grafana
+    volumes:
+      - ./data/grafana/grafana-storage:/var/lib/grafana
+      - ./data/grafana/grafana_provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./data/grafana/grafana_provisioning/dashboards:/etc/grafana/provisioning/dashboards/http
+    ports:
+      - 3000:3000
+    restart: on-failure
+    networks:
+      - main
+
+networks:
+  main:
+
+volumes:
+  postgresql-data:
