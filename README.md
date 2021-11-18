@@ -104,11 +104,11 @@ products (
 ![Pattern of code](assets/pattern.png)
 
 ---
-## What would you improve if given more days?
+## Improvements I can think of.
 
- > _*While I was not able to perform the task in stipulated amount of time because I was down with fever. But if given more time*_:
+ > If I'm not lazy, I'd:
 
-1. Would have evolved the design pattern more. Taking all the sql as operation that can be implemented at source.
+1. Have evolved the design pattern more. Taking all the sql as operation that can be implemented at source.
 
 2. Have more dashboards for monitoring of database and MQ.
 
@@ -131,7 +131,7 @@ products (
 - I was confused between distributed and multiprocessing. Later on assuming, there's an ask of distributed system as a whole.
 
 ---
-## Some extra stuff for bonus points:
+## Monitoring:
 
 - Implemented log stack using `prometheus` and `grafana`.
 
@@ -143,6 +143,3 @@ products (
 ![services](assets/services.png)
 
 ---
-## (If this interests you) Some things that I learned:
-
-[link to notion](https://www.notion.so/prakharcode/Task-learnings-b6eb45e25357494aacbe4094e79b9123)
