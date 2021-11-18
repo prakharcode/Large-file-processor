@@ -1,11 +1,8 @@
 # Large file processing
 
-Submitted by: Prakhar Srivastava
-
 - **Problem Statement**: Aim is to build a system which is able to handle long running processes in a distributed fashion.
 
-1. Your code should follow concept of OOPS
-2. Support for regular non-blocking parallel ingestion of the given file into a table. Consider thinking about the scale of what should happen if the file is to be processed in 2 mins.
+1. Support for regular non-blocking parallel ingestion of the given file into a table. Consider thinking about the scale of what should happen if the file is to be processed in 2 mins.
 
 3. Support for updating existing products in the table based on `sku` as the primary key. (Yes, we know about the kind of data in the file. You need to find a workaround for it)
 

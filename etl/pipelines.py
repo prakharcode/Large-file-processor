@@ -1,12 +1,12 @@
 import os
 from celery import group
-from postman_task.celery import app
-from postman_task.source import source
+from etl.celery import app
+from etl.source import source
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import scoped_session
-from postman_task.destination import destination
-from postman_task.utils.app_logger import _get_logger
-from postman_task.tasks import get_ingest_data_chunks_task
+from etl.destination import destination
+from etl.utils.app_logger import _get_logger
+from etl.tasks import get_ingest_data_chunks_task
 
 class data_ingestion_pipeline:
     """pipeline

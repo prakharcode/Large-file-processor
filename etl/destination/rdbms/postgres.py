@@ -1,8 +1,8 @@
 import pandas as pd
-from postman_task.celery import app
+from etl.celery import app
 from sqlalchemy import create_engine
-from postman_task.destination.rdbms.operations import upsert_wrap
-from postman_task.destination.rdbms.base import RDBMSDestination
+from etl.destination.rdbms.operations import upsert_wrap
+from etl.destination.rdbms.base import RDBMSDestination
 
 class Postgres(RDBMSDestination):
     """Derived class from RDBMSDestination to get data into Postgres.

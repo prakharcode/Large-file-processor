@@ -1,8 +1,8 @@
 import sys
 from celery import group
-from postman_task.utils.config_parser import config
-from postman_task.utils.app_logger import _get_logger
-from postman_task.pipelines import ( data_ingestion_pipeline, 
+from etl.utils.config_parser import config
+from etl.utils.app_logger import _get_logger
+from etl.pipelines import ( data_ingestion_pipeline, 
             data_aggregation_pipeline )
 
 LOGGER = _get_logger(__name__)

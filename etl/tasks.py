@@ -1,4 +1,4 @@
-from postman_task.celery import app
+from etl.celery import app
 from celery import group
 
 @app.task

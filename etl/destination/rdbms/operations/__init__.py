@@ -1,0 +1,1 @@
+from etl.destination.rdbms.operations.upsert import upsert_wrap

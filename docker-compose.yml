@@ -48,13 +48,13 @@ services:
       - main
     ports:
       - "5555:5555"
-    command: sh -c "celery -A postman_task flower ---loglevel=info"
+    command: sh -c "celery -A etl flower ---loglevel=info"
     restart: on-failure
 
   celery_worker:
     environment: 
       - CELERY_BROKER_URL=amqp://rabbitmq:5672/
-    command: ["celery", "-A", "postman_task", "worker", "-E", "-l", "info"]
+    command: ["celery", "-A", "etl", "worker", "-E", "-l", "info"]
     depends_on:
       - postgres
       - rabbitmq

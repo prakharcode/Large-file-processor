@@ -1,5 +1,5 @@
-from postman_task.destination.rdbms.postgres import Postgres
-from postman_task.destination.base import Destination
+from etl.destination.rdbms.postgres import Postgres
+from etl.destination.base import Destination
 
 class destination:
     """destination

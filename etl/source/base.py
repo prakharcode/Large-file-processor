@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from postman_task.utils.app_logger import _get_logger
+from etl.utils.app_logger import _get_logger
 
 
 class Source(ABC):

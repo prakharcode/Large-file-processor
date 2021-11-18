@@ -1,5 +1,5 @@
-from postman_task.source.base import Source
-from postman_task.source.csv import CSVsource
+from etl.source.base import Source
+from etl.source.csv import CSVsource
 import pandas as pd
 
 class source:

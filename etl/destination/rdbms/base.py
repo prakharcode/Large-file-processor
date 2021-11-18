@@ -1,5 +1,5 @@
-from postman_task.destination.base import Destination
-from postman_task.utils.app_logger import _get_logger
+from etl.destination.base import Destination
+from etl.utils.app_logger import _get_logger
 from sqlalchemy import create_engine, MetaData, Table
 
 class RDBMSDestination(Destination):
